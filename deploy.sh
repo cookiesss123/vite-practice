@@ -20,14 +20,10 @@ git checkout -B main
 git add -A
 git commit -m 'deploy'
 
-# 部署到 https://cookiesss123.github.io
-# git push -f git@github.com:cookiesss123/cookiesss123.github.io.git master
+# if you are deploying to https://cookiesss123.github.io
+# git push -f git@github.com:cookiesss123/cookiesss123.github.io.git main
 
-# 部署到 https://cookiesss123.github.io/vite-deploy-sample1
-# git push -f git@github.com:cookiesss123/vite-deploy-sample1.git master:gh-pages
-# 以這個專案來講就要改成這樣以下這樣，下面是走 ssh 模式
-git push -f git@github.com:cookiesss123/vite-deploy-sample1.git main:gh-pages
-# 除此之外，也可以改走 HTTPS 模式
-# git push -f https://github.com/hsiangfeng/example-vite-react master:gh-pages
+# if you are deploying to https://cookiesss123.github.io/vite-practice
+git push -f https://github.com/cookiesss123/vite-practice.git main:gh-pages
 
 cd -
