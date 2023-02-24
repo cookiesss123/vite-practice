@@ -52,7 +52,7 @@
                     </tr>
                     <tr>
                         <td class="fw-bold">總金額</td>
-                        <td>{{ tempOrder.total }}</td>
+                        <td>{{ tempOrder.totala }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -89,7 +89,7 @@ import Modal from 'bootstrap/js/dist/modal'
 const { VITE_URL, VITE_PATH } = import.meta.env
 
 export default {
-  props: ['id', 'orders', 'getOrders', 'openModal'],
+  props: ['id', 'orders', 'getOrders', 'openModal', 'numberComma'],
   data () {
     return {
       myModal: {},

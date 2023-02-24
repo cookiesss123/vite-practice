@@ -21,7 +21,7 @@
               {{ item.product.title }} 數量：{{item.qty}} {{item.product.unit}}
             </p>
           </td>
-          <td>{{ order.total }}</td>
+          <td>{{ numberComma(order.total) }}</td>
           <td>
             <div class="form-check form-switch">
               <input class="form-check-input" type="checkbox" role="switch" id="pay" v-model="order.is_paid" @change="this.$refs.modal.updateOrder(order)">
@@ -37,7 +37,7 @@
         </tr>
       </tbody>
     </table>
-    <OrderModal ref="modal" :id="orderId" :orders="orders" :get-orders="getOrders" :open-modal="openModal"></OrderModal>
+    <OrderModal ref="modal" :number-comma="numberComma" :id="orderId" :orders="orders" :get-orders="getOrders" :open-modal="openModal"></OrderModal>
   </div>
   </template>
 <script>
@@ -54,6 +54,11 @@ export default {
     }
   },
   methods: {
+    // 千分位 https://tools.wingzero.tw/article/sn/269
+    numberComma (num) {
+      const comma = /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g
+      return num.toString().replace(comma, ',')
+    },
     getOrders () {
       const loader = this.$loading.show()
 

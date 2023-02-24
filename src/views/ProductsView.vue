@@ -20,8 +20,8 @@
       <tr v-for="product in products" :key="product.id">
         <td>{{ product.category }}</td>
         <td>{{ product.title }}</td>
-        <td>{{ product.origin_price }}</td>
-        <td>{{ product.price }}</td>
+        <td>{{ numberComma(product.origin_price) }}</td>
+        <td>{{ numberComma(product.price) }}</td>
         <td :class="{'text-success':product.is_enabled, 'fw-bold':product.is_enabled}">{{`${product.is_enabled ? '啟用' : '未啟用'}`}}</td>
         <td>
           <div class="btn-group">
@@ -51,6 +51,11 @@ export default {
     }
   },
   methods: {
+    // 千分位
+    numberComma (num) {
+      const comma = /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g
+      return num.toString().replace(comma, ',')
+    },
     getProducts () {
       const loader = this.$loading.show()
       // 為何都要再存一次???
